@@ -1,4 +1,4 @@
-import { Accelerometer } from "expo-sensors"
+import { Accelerometer, ThreeAxisMeasurement } from "expo-sensors"
 import { useEffect, useState } from "react"
 
 export const useAccelerometer = () => {
@@ -7,11 +7,7 @@ export const useAccelerometer = () => {
         if (status !== 'granted') throw new Error('No Accelerometer Permission') 
     } 
     
-    const [data, setData] = useState({
-        x: 0,
-        y: 0,
-        z: 0,
-    });
+    const [data, setData] = useState<ThreeAxisMeasurement | null>(null);
 
     const [subscription, setSubscription] = useState<ReturnType<typeof Accelerometer.addListener> | null>(null);
     

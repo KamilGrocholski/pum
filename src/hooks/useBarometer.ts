@@ -10,24 +10,13 @@ export const useBarometer = () => {
     const [data, setData] = useState<BarometerMeasurement | null>(null);
 
     const [subscription, setSubscription] = useState<ReturnType<typeof Barometer.addListener> | null>(null);
-
-    useEffect(() => {
-      _toggle();
-    }, []);
   
     useEffect(() => {
+      _subscribe()
       return () => {
         _unsubscribe();
       };
     }, []);
-  
-    const _toggle = () => {
-      if (subscription) {
-        _unsubscribe();
-      } else {
-        _subscribe();
-      }
-    };
   
     const _subscribe = () => {
       setSubscription(Barometer.addListener(barometerData => {
@@ -46,6 +35,6 @@ export const useBarometer = () => {
         _unsubscribe,
         data,
         subscription,
-        setSubscription
+        setSubscription,
     }
 }

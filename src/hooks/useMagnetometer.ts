@@ -1,4 +1,4 @@
-import { Magnetometer } from "expo-sensors"
+import { Magnetometer, ThreeAxisMeasurement } from "expo-sensors"
 import { useState, useEffect } from "react"
 
 export const useMagnetometer = () => {
@@ -7,11 +7,7 @@ export const useMagnetometer = () => {
         if (status !== 'granted') throw new Error('No Magnetometer Permission')
     }
 
-    const [data, setData] = useState({
-        x: 0,
-        y: 0,
-        z: 0,
-      });
+    const [data, setData] = useState<ThreeAxisMeasurement | null>(null);
       const [subscription, setSubscription] = useState<ReturnType<typeof Magnetometer.addListener> | null>(null);
     
       const _slow = () => {

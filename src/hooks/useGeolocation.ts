@@ -35,6 +35,6 @@ export const useGeolocation = () => {
         subscription,
         _subscribe,
         _unsubscribe,
-        permissionRequest
+        permissionRequest,
     }
 }

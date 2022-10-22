@@ -1,21 +1,41 @@
-import { View } from "react-native"
 import { useGeolocation } from "../../hooks/useGeolocation"
-import { Text } from "react-native-rapi-ui"
+import { OutputText } from "../OutputText"
+import { ToggleButton } from "../ToggleButton"
 
 export const Geolocation: React.FC = () => {
-    const { data } = useGeolocation()
-    console.log(data)
+    const { data, _subscribe, _unsubscribe } = useGeolocation()
 
     return (
-        <View>
-            <Text fontWeight="bold">Dokładność<Text>{ data?.coords.accuracy }</Text></Text>
-            <Text fontWeight="bold">Wysokość<Text>{ data?.coords.altitude }</Text></Text>
-            <Text fontWeight="bold">Dokładność wysokości<Text>{ data?.coords.altitudeAccuracy }</Text></Text>
-            <Text fontWeight="bold">Kierunek<Text>{ data?.coords.heading }</Text></Text>
-            <Text fontWeight="bold">Wysokość<Text>{ data?.coords.latitude }</Text></Text>
-            <Text fontWeight="bold">Szerokość<Text>{ data?.coords.longitude }</Text></Text>
-            <Text fontWeight="bold">Prędkość<Text>{ data?.coords.speed }</Text></Text>
-        </View>
+        <>
+            <OutputText 
+                label={ 'Dokładność' }
+                data={ data?.coords.accuracy}
+            />
+            <OutputText 
+                label={ 'Wysokość' }
+                data={ data?.coords.altitude }
+            />
+            <OutputText 
+                label={ 'Kierunek' }
+                data={ data?.coords.heading }
+            />
+            <OutputText 
+                label={ 'Wysokość geograficzna' }
+                data={ data?.coords.latitude }
+            />
+            <OutputText 
+                label={ 'Szerokość geograczina' }
+                data={ data?.coords.longitude }
+            />
+            <OutputText 
+                label={ 'Prędkość' }
+                data={ data?.coords.speed }
+            />
+            <ToggleButton 
+                kill={ _unsubscribe }
+                init={ _subscribe }
+            />
+        </>
     )
 }
 

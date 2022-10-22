@@ -11,7 +11,7 @@ import {
 import { Ionicons, Entypo, MaterialIcons, Fontisto } from "@expo/vector-icons";
 import FeatureButton from "../components/FeatureButton";
 import { SensorContainer } from "../components/sensors/SensorContainer";
-import { Geolocation } from "../components/sensors/Geolocation";
+import { Accelerometer, Barometer, Gyroscope, Magnetometer, Pedometer, Geolocation, DeviceMotion } from "../components/sensors";
 
 
 const sensors = {
@@ -23,27 +23,32 @@ const sensors = {
   acceletometer: {
     icon: <Ionicons name='speedometer' size={ 48 } />,
     name: 'Akcelerometr',
-    component: <Geolocation />,
+    component: <Accelerometer />,
   },
   barometer: {
     icon: <MaterialIcons name='compress' size={ 48 } />,
     name: 'Barometr',
-    component: <Geolocation />,
+    component: <Barometer />,
   },
   gyroscope: {
     icon: <Fontisto name='spinner-fidget' size={ 48 } />,
     name: 'Żyroskop',
-    component: <Geolocation />,
+    component: <Gyroscope />,
   },
   magnetometer: {
     icon: <Ionicons name='magnet' size={ 48 } />,
     name: 'Magnetomierz',
-    component: <Geolocation />,
+    component: <Magnetometer />,
   },
   pedometer: {
     icon: <MaterialIcons name='directions-walk' size={ 48 } />,
     name: 'Krokomierz',
-    component: <Geolocation />,
+    component: <Pedometer />,
+  },
+  deviceMotion: {
+    icon: <MaterialIcons name='directions-walk' size={ 48 } />,
+    name: 'Ruch urządzenia',
+    component: <DeviceMotion />
   }
 } as const
 
@@ -113,6 +118,7 @@ export default function ({
         {sensor && sensors[sensor] &&
           <SensorContainer 
               sensorComponent={ sensors[sensor].component }
+              icon={ sensors[sensor].icon }
           />
         }
       </View>
