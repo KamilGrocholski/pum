@@ -3,6 +3,7 @@ import React from "react";
 import { ThemeProvider } from "react-native-rapi-ui";
 import Navigation from "./src/navigation";
 import { AuthProvider } from "./src/provider/AuthProvider";
+import 'react-native-url-polyfill/auto' //https://justinnoel.dev/2020/12/08/react-native-urlsearchparams-error-not-implemented/
 
 export default function App() {
   const images = [

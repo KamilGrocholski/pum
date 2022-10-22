@@ -1,6 +1,6 @@
 export type MainStackParamList = {
 	MainTabs: undefined;
-	SecondScreen: undefined;
+	'Sensory': undefined;
 };
 
 export type AuthStackParamList = {

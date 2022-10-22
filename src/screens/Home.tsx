@@ -59,7 +59,7 @@ export default function ({
             <Button
               text="Go to second screen"
               onPress={() => {
-                navigation.navigate("SecondScreen");
+                navigation.navigate("Sensory");
               }}
               style={{
                 marginTop: 10,

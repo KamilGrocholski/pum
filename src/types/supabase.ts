@@ -12,6 +12,108 @@ export interface paths {
       };
     };
   };
+  "/location": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.location.id"];
+          created_at?: parameters["rowFilter.location.created_at"];
+          lat?: parameters["rowFilter.location.lat"];
+          lon?: parameters["rowFilter.location.lon"];
+          mapId?: parameters["rowFilter.location.mapId"];
+          userId?: parameters["rowFilter.location.userId"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["location"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** location */
+          location?: definitions["location"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.location.id"];
+          created_at?: parameters["rowFilter.location.created_at"];
+          lat?: parameters["rowFilter.location.lat"];
+          lon?: parameters["rowFilter.location.lon"];
+          mapId?: parameters["rowFilter.location.mapId"];
+          userId?: parameters["rowFilter.location.userId"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.location.id"];
+          created_at?: parameters["rowFilter.location.created_at"];
+          lat?: parameters["rowFilter.location.lat"];
+          lon?: parameters["rowFilter.location.lon"];
+          mapId?: parameters["rowFilter.location.mapId"];
+          userId?: parameters["rowFilter.location.userId"];
+        };
+        body: {
+          /** location */
+          location?: definitions["location"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/player": {
     get: {
       parameters: {
@@ -19,10 +121,7 @@ export interface paths {
           id?: parameters["rowFilter.player.id"];
           created_at?: parameters["rowFilter.player.created_at"];
           userId?: parameters["rowFilter.player.userId"];
-          lat?: parameters["rowFilter.player.lat"];
-          lon?: parameters["rowFilter.player.lon"];
-          arrow?: parameters["rowFilter.player.arrow"];
-          map?: parameters["rowFilter.player.map"];
+          mapId?: parameters["rowFilter.player.mapId"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -76,10 +175,7 @@ export interface paths {
           id?: parameters["rowFilter.player.id"];
           created_at?: parameters["rowFilter.player.created_at"];
           userId?: parameters["rowFilter.player.userId"];
-          lat?: parameters["rowFilter.player.lat"];
-          lon?: parameters["rowFilter.player.lon"];
-          arrow?: parameters["rowFilter.player.arrow"];
-          map?: parameters["rowFilter.player.map"];
+          mapId?: parameters["rowFilter.player.mapId"];
         };
         header: {
           /** Preference */
@@ -97,107 +193,11 @@ export interface paths {
           id?: parameters["rowFilter.player.id"];
           created_at?: parameters["rowFilter.player.created_at"];
           userId?: parameters["rowFilter.player.userId"];
-          lat?: parameters["rowFilter.player.lat"];
-          lon?: parameters["rowFilter.player.lon"];
-          arrow?: parameters["rowFilter.player.arrow"];
-          map?: parameters["rowFilter.player.map"];
+          mapId?: parameters["rowFilter.player.mapId"];
         };
         body: {
           /** player */
           player?: definitions["player"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/test": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.test.id"];
-          created_at?: parameters["rowFilter.test.created_at"];
-          test?: parameters["rowFilter.test.test"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["test"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** test */
-          test?: definitions["test"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.test.id"];
-          created_at?: parameters["rowFilter.test.created_at"];
-          test?: parameters["rowFilter.test.test"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.test.id"];
-          created_at?: parameters["rowFilter.test.created_at"];
-          test?: parameters["rowFilter.test.test"];
-        };
-        body: {
-          /** test */
-          test?: definitions["test"];
         };
         header: {
           /** Preference */
@@ -216,9 +216,7 @@ export interface paths {
         query: {
           id?: parameters["rowFilter.map.id"];
           created_at?: parameters["rowFilter.map.created_at"];
-          players?: parameters["rowFilter.map.players"];
           name?: parameters["rowFilter.map.name"];
-          owner?: parameters["rowFilter.map.owner"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -271,9 +269,7 @@ export interface paths {
         query: {
           id?: parameters["rowFilter.map.id"];
           created_at?: parameters["rowFilter.map.created_at"];
-          players?: parameters["rowFilter.map.players"];
           name?: parameters["rowFilter.map.name"];
-          owner?: parameters["rowFilter.map.owner"];
         };
         header: {
           /** Preference */
@@ -290,9 +286,7 @@ export interface paths {
         query: {
           id?: parameters["rowFilter.map.id"];
           created_at?: parameters["rowFilter.map.created_at"];
-          players?: parameters["rowFilter.map.players"];
           name?: parameters["rowFilter.map.name"];
-          owner?: parameters["rowFilter.map.owner"];
         };
         body: {
           /** map */
@@ -312,6 +306,31 @@ export interface paths {
 }
 
 export interface definitions {
+  location: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: double precision */
+    lat?: number;
+    /** Format: double precision */
+    lon?: number;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Foreign Key to `map.id`.<fk table='map' column='id'/>
+     */
+    mapId?: string;
+    /** Format: uuid */
+    userId?: string;
+  };
   player: {
     /**
      * Format: bigint
@@ -326,33 +345,12 @@ export interface definitions {
     created_at?: string;
     /** Format: uuid */
     userId?: string;
-    /** Format: double precision */
-    lat?: number;
-    /** Format: double precision */
-    lon?: number;
-    /** Format: double precision */
-    arrow?: number;
     /**
-     * Format: bigint
+     * Format: uuid
      * @description Note:
-     * This is a Foreign Key to `player.id`.<fk table='player' column='id'/>
+     * This is a Foreign Key to `map.id`.<fk table='map' column='id'/>
      */
-    map?: number;
-  };
-  test: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
-    /** Format: smallint */
-    test?: number;
+    mapId?: string;
   };
   map: {
     /**
@@ -367,16 +365,8 @@ export interface definitions {
      * @default now()
      */
     created_at?: string;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `player.id`.<fk table='player' column='id'/>
-     */
-    players?: number;
     /** Format: character varying */
     name: string;
-    /** Format: uuid */
-    owner: string;
   };
 }
 
@@ -413,6 +403,20 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
+  /** @description location */
+  "body.location": definitions["location"];
+  /** Format: bigint */
+  "rowFilter.location.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.location.created_at": string;
+  /** Format: double precision */
+  "rowFilter.location.lat": string;
+  /** Format: double precision */
+  "rowFilter.location.lon": string;
+  /** Format: uuid */
+  "rowFilter.location.mapId": string;
+  /** Format: uuid */
+  "rowFilter.location.userId": string;
   /** @description player */
   "body.player": definitions["player"];
   /** Format: bigint */
@@ -421,34 +425,16 @@ export interface parameters {
   "rowFilter.player.created_at": string;
   /** Format: uuid */
   "rowFilter.player.userId": string;
-  /** Format: double precision */
-  "rowFilter.player.lat": string;
-  /** Format: double precision */
-  "rowFilter.player.lon": string;
-  /** Format: double precision */
-  "rowFilter.player.arrow": string;
-  /** Format: bigint */
-  "rowFilter.player.map": string;
-  /** @description test */
-  "body.test": definitions["test"];
-  /** Format: bigint */
-  "rowFilter.test.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.test.created_at": string;
-  /** Format: smallint */
-  "rowFilter.test.test": string;
+  /** Format: uuid */
+  "rowFilter.player.mapId": string;
   /** @description map */
   "body.map": definitions["map"];
   /** Format: uuid */
   "rowFilter.map.id": string;
   /** Format: timestamp with time zone */
   "rowFilter.map.created_at": string;
-  /** Format: bigint */
-  "rowFilter.map.players": string;
   /** Format: character varying */
   "rowFilter.map.name": string;
-  /** Format: uuid */
-  "rowFilter.map.owner": string;
 }
 
 export interface operations {}
