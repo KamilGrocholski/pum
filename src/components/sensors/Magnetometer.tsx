@@ -1,6 +1,6 @@
 import { useMagnetometer } from "../../hooks/useMagnetometer"
-import { OutputText } from "../OutputText"
-import { ToggleButton } from "../ToggleButton"
+import { OutputText } from "../utils/OutputText"
+import { ToggleButton } from "../utils/ToggleButton"
 
 export const Magnetometer: React.FC = () => {
     const { data, _subscribe, _unsubscribe } = useMagnetometer()

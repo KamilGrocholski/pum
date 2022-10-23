@@ -1,6 +1,6 @@
 import { useAccelerometer } from "../../hooks/useAccelerometer"
-import { ToggleButton } from "../ToggleButton"
-import { OutputText } from "../OutputText"
+import { ToggleButton } from "../utils/ToggleButton"
+import { OutputText } from "../utils/OutputText"
 
 export const Accelerometer: React.FC = () => {
     const { data, _subscribe, _unsubscribe } = useAccelerometer()

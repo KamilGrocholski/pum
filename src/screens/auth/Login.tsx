@@ -84,9 +84,9 @@ export default function ({
               }}
               size="h3"
             >
-              Login
+              Logowanie
             </Text>
-            <Text>Email</Text>
+            <Text>E-mail</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
@@ -98,7 +98,7 @@ export default function ({
               onChangeText={(text) => setEmail(text)}
             />
 
-            <Text style={{ marginTop: 15 }}>Password</Text>
+            <Text style={{ marginTop: 15 }}>Hasło</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your password"
@@ -128,7 +128,7 @@ export default function ({
                 justifyContent: "center",
               }}
             >
-              <Text size="md">Don't have an account?</Text>
+              <Text size="md">Nie masz jeszcze konta??</Text>
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate("Register");
@@ -141,7 +141,7 @@ export default function ({
                     marginLeft: 5,
                   }}
                 >
-                  Register here
+                  Stwórz je tutaj
                 </Text>
               </TouchableOpacity>
             </View>
@@ -159,7 +159,7 @@ export default function ({
                 }}
               >
                 <Text size="md" fontWeight="bold">
-                  Forget password
+                  Niepamiętam hasła
                 </Text>
               </TouchableOpacity>
             </View>

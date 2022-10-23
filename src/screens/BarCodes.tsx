@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { MainStackParamList } from "../types/navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Layout, Text } from "react-native-rapi-ui";
+import { BarCode } from "../components/BarCodeScanner";
 
 export default function ({
   navigation,
@@ -16,7 +17,7 @@ export default function ({
           justifyContent: "center",
         }}
       >
-        <Text>Profil</Text>
+        <BarCode />
       </View>
     </Layout>
   );

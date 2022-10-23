@@ -9,10 +9,8 @@ import {
   useTheme,
 } from "react-native-rapi-ui";
 import { Ionicons, Entypo, MaterialIcons, Fontisto } from "@expo/vector-icons";
-import FeatureButton from "../components/FeatureButton";
-import { SensorContainer } from "../components/sensors/SensorContainer";
-import { Accelerometer, Barometer, Gyroscope, Magnetometer, Pedometer, Geolocation, DeviceMotion } from "../components/sensors";
-
+import FeatureButton from "../components/utils/FeatureButton";
+import { Accelerometer, Barometer, Gyroscope, Magnetometer, Pedometer, Geolocation, DeviceMotion, SensorContainer } from "../components/sensors";
 
 const sensors = {
   geolocation: {
@@ -49,7 +47,7 @@ const sensors = {
     icon: <MaterialIcons name='directions-walk' size={ 48 } />,
     name: 'Ruch urządzenia',
     component: <DeviceMotion />
-  }
+  },
 } as const
 
 type Sensor = keyof typeof sensors

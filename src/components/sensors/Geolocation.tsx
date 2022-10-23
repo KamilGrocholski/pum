@@ -1,6 +1,6 @@
 import { useGeolocation } from "../../hooks/useGeolocation"
-import { OutputText } from "../OutputText"
-import { ToggleButton } from "../ToggleButton"
+import { OutputText } from "../utils/OutputText"
+import { ToggleButton } from "../utils/ToggleButton"
 
 export const Geolocation: React.FC = () => {
     const { data, _subscribe, _unsubscribe } = useGeolocation()

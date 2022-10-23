@@ -22,7 +22,7 @@ export default function ({
   return (
     <Layout>
       <TopNav
-        middleContent="Home"
+        middleContent="Strona główna"
         rightContent={
           <Ionicons
             name={isDarkmode ? "sunny" : "moon"}
@@ -47,17 +47,16 @@ export default function ({
       >
         <Section style={{ marginTop: 20 }}>
           <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              These UI components provided by Rapi UI
-            </Text>
             <Button
               style={{ marginTop: 10 }}
-              text="Rapi UI Documentation"
+              text="Czytnik kodów"
               status="info"
-              onPress={() => Linking.openURL("https://rapi-ui.kikiding.space/")}
+              onPress={() => {
+                navigation.navigate('BarCodeScanner')
+              }}
             />
             <Button
-              text="Go to second screen"
+              text="Sensory"
               onPress={() => {
                 navigation.navigate("Sensory");
               }}
@@ -67,11 +66,11 @@ export default function ({
             />
             <Button
               status="danger"
-              text="Logout"
+              text="Wyloguj"
               onPress={async () => {
                 const { error } = await supabase.auth.signOut();
                 if (!error) {
-                  alert("Signed out!");
+                  alert("Wylogowano!");
                 }
                 if (error) {
                   alert(error.message);

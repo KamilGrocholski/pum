@@ -35,7 +35,7 @@ export default function ({
     });
     if (!error && !user) {
       setLoading(false);
-      alert("Check your email for the login link!");
+      alert("Sprawdź stwoją skrzynkę pocztową!");
     }
     if (error) {
       setLoading(false);
@@ -83,9 +83,9 @@ export default function ({
                 padding: 30,
               }}
             >
-              Register
+              Rejestracja
             </Text>
-            <Text>Email</Text>
+            <Text>E-mail</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
@@ -97,10 +97,10 @@ export default function ({
               onChangeText={(text) => setEmail(text)}
             />
 
-            <Text style={{ marginTop: 15 }}>Password</Text>
+            <Text style={{ marginTop: 15 }}>Hasło</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
-              placeholder="Enter your password"
+              placeholder="Wprowadź hasło"
               value={password}
               autoCapitalize="none"
               autoCompleteType="off"
@@ -109,7 +109,7 @@ export default function ({
               onChangeText={(text) => setPassword(text)}
             />
             <Button
-              text={loading ? "Loading" : "Create an account"}
+              text={loading ? "Wczytywanie" : "Stwórz konto"}
               onPress={() => {
                 register();
               }}
@@ -127,7 +127,7 @@ export default function ({
                 justifyContent: "center",
               }}
             >
-              <Text size="md">Already have an account?</Text>
+              <Text size="md">Masz już konto?</Text>
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate("Login");
@@ -140,7 +140,7 @@ export default function ({
                     marginLeft: 5,
                   }}
                 >
-                  Login here
+                  Zaloguj się tutaj
                 </Text>
               </TouchableOpacity>
             </View>

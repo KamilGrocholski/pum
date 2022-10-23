@@ -1,6 +1,7 @@
 export type MainStackParamList = {
 	MainTabs: undefined;
 	'Sensory': undefined;
+	BarCodeScanner: undefined;
 };
 
 export type AuthStackParamList = {

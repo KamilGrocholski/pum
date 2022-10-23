@@ -28,7 +28,7 @@ const MainTabs = () => {
         component={Home}
         options={{
           tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="Home" />
+            <TabBarText focused={focused} title="Strona główna" />
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"md-home"} />
@@ -40,7 +40,7 @@ const MainTabs = () => {
         component={Profile}
         options={{
           tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="Profile" />
+            <TabBarText focused={focused} title="Profil" />
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"person"} />
@@ -52,7 +52,7 @@ const MainTabs = () => {
         component={About}
         options={{
           tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="About" />
+            <TabBarText focused={focused} title="Coś" />
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"ios-information-circle"} />

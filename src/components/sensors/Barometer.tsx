@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import { useBarometer } from "../../hooks/useBarometer"
-import { OutputText } from "../OutputText"
+import { OutputText } from "../utils/OutputText"
 
 export const Barometer: React.FC = () => {
     const { data } = useBarometer()

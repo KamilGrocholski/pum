@@ -12,16 +12,16 @@ export interface paths {
       };
     };
   };
-  "/location": {
+  "/BarCode": {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.location.id"];
-          created_at?: parameters["rowFilter.location.created_at"];
-          lat?: parameters["rowFilter.location.lat"];
-          lon?: parameters["rowFilter.location.lon"];
-          mapId?: parameters["rowFilter.location.mapId"];
-          userId?: parameters["rowFilter.location.userId"];
+          id?: parameters["rowFilter.BarCode.id"];
+          created_at?: parameters["rowFilter.BarCode.created_at"];
+          creator_id?: parameters["rowFilter.BarCode.creator_id"];
+          name?: parameters["rowFilter.BarCode.name"];
+          details?: parameters["rowFilter.BarCode.details"];
+          data?: parameters["rowFilter.BarCode.data"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -43,7 +43,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["location"][];
+          schema: definitions["BarCode"][];
         };
         /** Partial Content */
         206: unknown;
@@ -52,8 +52,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** location */
-          location?: definitions["location"];
+          /** BarCode */
+          BarCode?: definitions["BarCode"];
         };
         query: {
           /** Filtering Columns */
@@ -72,12 +72,12 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.location.id"];
-          created_at?: parameters["rowFilter.location.created_at"];
-          lat?: parameters["rowFilter.location.lat"];
-          lon?: parameters["rowFilter.location.lon"];
-          mapId?: parameters["rowFilter.location.mapId"];
-          userId?: parameters["rowFilter.location.userId"];
+          id?: parameters["rowFilter.BarCode.id"];
+          created_at?: parameters["rowFilter.BarCode.created_at"];
+          creator_id?: parameters["rowFilter.BarCode.creator_id"];
+          name?: parameters["rowFilter.BarCode.name"];
+          details?: parameters["rowFilter.BarCode.details"];
+          data?: parameters["rowFilter.BarCode.data"];
         };
         header: {
           /** Preference */
@@ -92,205 +92,16 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.location.id"];
-          created_at?: parameters["rowFilter.location.created_at"];
-          lat?: parameters["rowFilter.location.lat"];
-          lon?: parameters["rowFilter.location.lon"];
-          mapId?: parameters["rowFilter.location.mapId"];
-          userId?: parameters["rowFilter.location.userId"];
+          id?: parameters["rowFilter.BarCode.id"];
+          created_at?: parameters["rowFilter.BarCode.created_at"];
+          creator_id?: parameters["rowFilter.BarCode.creator_id"];
+          name?: parameters["rowFilter.BarCode.name"];
+          details?: parameters["rowFilter.BarCode.details"];
+          data?: parameters["rowFilter.BarCode.data"];
         };
         body: {
-          /** location */
-          location?: definitions["location"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/player": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.player.id"];
-          created_at?: parameters["rowFilter.player.created_at"];
-          userId?: parameters["rowFilter.player.userId"];
-          mapId?: parameters["rowFilter.player.mapId"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["player"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** player */
-          player?: definitions["player"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.player.id"];
-          created_at?: parameters["rowFilter.player.created_at"];
-          userId?: parameters["rowFilter.player.userId"];
-          mapId?: parameters["rowFilter.player.mapId"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.player.id"];
-          created_at?: parameters["rowFilter.player.created_at"];
-          userId?: parameters["rowFilter.player.userId"];
-          mapId?: parameters["rowFilter.player.mapId"];
-        };
-        body: {
-          /** player */
-          player?: definitions["player"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/map": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.map.id"];
-          created_at?: parameters["rowFilter.map.created_at"];
-          name?: parameters["rowFilter.map.name"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["map"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** map */
-          map?: definitions["map"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.map.id"];
-          created_at?: parameters["rowFilter.map.created_at"];
-          name?: parameters["rowFilter.map.name"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.map.id"];
-          created_at?: parameters["rowFilter.map.created_at"];
-          name?: parameters["rowFilter.map.name"];
-        };
-        body: {
-          /** map */
-          map?: definitions["map"];
+          /** BarCode */
+          BarCode?: definitions["BarCode"];
         };
         header: {
           /** Preference */
@@ -306,32 +117,7 @@ export interface paths {
 }
 
 export interface definitions {
-  location: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
-    /** Format: double precision */
-    lat?: number;
-    /** Format: double precision */
-    lon?: number;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `map.id`.<fk table='map' column='id'/>
-     */
-    mapId?: string;
-    /** Format: uuid */
-    userId?: string;
-  };
-  player: {
+  BarCode: {
     /**
      * Format: bigint
      * @description Note:
@@ -344,29 +130,13 @@ export interface definitions {
      */
     created_at?: string;
     /** Format: uuid */
-    userId?: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `map.id`.<fk table='map' column='id'/>
-     */
-    mapId?: string;
-  };
-  map: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
+    creator_id?: string;
     /** Format: character varying */
-    name: string;
+    name?: string;
+    /** Format: text */
+    details?: string;
+    /** Format: text */
+    data?: string;
   };
 }
 
@@ -403,38 +173,20 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
-  /** @description location */
-  "body.location": definitions["location"];
+  /** @description BarCode */
+  "body.BarCode": definitions["BarCode"];
   /** Format: bigint */
-  "rowFilter.location.id": string;
+  "rowFilter.BarCode.id": string;
   /** Format: timestamp with time zone */
-  "rowFilter.location.created_at": string;
-  /** Format: double precision */
-  "rowFilter.location.lat": string;
-  /** Format: double precision */
-  "rowFilter.location.lon": string;
+  "rowFilter.BarCode.created_at": string;
   /** Format: uuid */
-  "rowFilter.location.mapId": string;
-  /** Format: uuid */
-  "rowFilter.location.userId": string;
-  /** @description player */
-  "body.player": definitions["player"];
-  /** Format: bigint */
-  "rowFilter.player.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.player.created_at": string;
-  /** Format: uuid */
-  "rowFilter.player.userId": string;
-  /** Format: uuid */
-  "rowFilter.player.mapId": string;
-  /** @description map */
-  "body.map": definitions["map"];
-  /** Format: uuid */
-  "rowFilter.map.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.map.created_at": string;
+  "rowFilter.BarCode.creator_id": string;
   /** Format: character varying */
-  "rowFilter.map.name": string;
+  "rowFilter.BarCode.name": string;
+  /** Format: text */
+  "rowFilter.BarCode.details": string;
+  /** Format: text */
+  "rowFilter.BarCode.data": string;
 }
 
 export interface operations {}

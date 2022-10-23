@@ -16,7 +16,7 @@ export default function ({
           justifyContent: "center",
         }}
       >
-        <Text>This is the About tab</Text>
+        <Text>Coś</Text>
       </View>
     </Layout>
   );
