@@ -52,7 +52,7 @@ export default function ({
               text="Czytnik kodów"
               status="info"
               onPress={() => {
-                navigation.navigate('BarCodeScanner')
+                navigation.navigate('BarCodeTabs')
               }}
             />
             <Button
