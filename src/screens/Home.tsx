@@ -14,11 +14,13 @@ import {
   themeColor,
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
+import { useAudio } from "../hooks/useAudio";
 
 export default function ({
   navigation,
 }: NativeStackScreenProps<MainStackParamList, "MainTabs">) {
   const { isDarkmode, setTheme } = useTheme();
+
   return (
     <Layout>
       <TopNav
@@ -53,6 +55,14 @@ export default function ({
               status="info"
               onPress={() => {
                 navigation.navigate('BarCodeTabs')
+              }}
+            />
+            <Button
+              style={{ marginTop: 10 }}
+              text="Dyktafon"
+              status="info"
+              onPress={() => {
+                navigation.navigate('Recording')
               }}
             />
             <Button

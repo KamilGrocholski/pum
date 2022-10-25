@@ -4,6 +4,7 @@ import { Text, Button, TextInput } from 'react-native-rapi-ui';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useBarCodeScanner } from '../../hooks/useBarCodeScanner';
 import { addBarCode } from '../../api/barCode';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const Scanner: React.FC = () => {
   const [newName, setNewName] = useState<string | undefined>(undefined)
@@ -13,18 +14,30 @@ export const Scanner: React.FC = () => {
 
   const { setScanned, scanned, hasPermission } = useBarCodeScanner()
 
+  const queryClient = useQueryClient()
+
+  const { mutate } = useMutation(addBarCode, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['barCodes'])    
+      setNewName(undefined)
+      setNewDetails(undefined)
+      setNewData(undefined)
+    },
+    onError: (err) => {
+      console.log(err)
+    }
+  })
+
   const handleBarCodeScanned = ({ type, data }: { type: string, data: string }) => {
     setScanned(true);
     setNewData(data)
-    // alert(`Kod kreskowy typu ${type} o danych ${data} został zeskanowany.`);
+    console.log(data)
+    alert(`Kod kreskowy typu ${type} o danych ${data} został zeskanowany.`);
   };
 
-  const handleAddBarCode = async () => {
-    console.log(newData)
+  const handleAddBarCode = () => {
     if (!newName || !newData) return
-    const { data, error } = await addBarCode({ data: newData, name: newName, details: newDetails })
-    console.log(error)
-    console.log(data)
+    mutate({ data: newData, name: newName, details: newDetails })
     setScanned(false)
   }
 

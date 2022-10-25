@@ -28,8 +28,9 @@ export const getAllBarCodes = async () => {
         .select('*')
         .eq('creator_id', myId)
 
-    return res
+    return res.data
 }
+
 
 export const getBarCodeById = async (id: number) => {
     const res = await supabase.from<definitions['BarCode']>('BarCode')

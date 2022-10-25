@@ -2,6 +2,7 @@ export type MainStackParamList = {
 	MainTabs: undefined;
 	'Sensory': undefined;
 	BarCodeTabs: undefined;
+	Recording: undefined;
 };
 
 export type AuthStackParamList = {

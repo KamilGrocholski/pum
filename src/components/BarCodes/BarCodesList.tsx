@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { FlatList, View } from "react-native"
 import { Text, themeColor } from "react-native-rapi-ui"
 import { getAllBarCodes } from "../../api/barCode"
-import { definitions } from "../../types/supabase"
+import { useQuery } from "@tanstack/react-query"
 
 export const BarCodesList: React.FC = () => {
-    const [barCodes, setBarCodes] = useState<definitions['BarCode'][] | null>(null)
-    useEffect(() => {
-        getAllBarCodes()
-            .then(res => setBarCodes(res.data))
-            .catch(err => console.log(err))
-    }, [])
+    const { data: barCodes } = useQuery(['barCodes'], getAllBarCodes, {
+        onError: (err) => {
+            console.log(err)
+        }
+    })
 
     return (
         <FlatList
@@ -18,7 +17,7 @@ export const BarCodesList: React.FC = () => {
                 paddingHorizontal: 20,
                 paddingVertical: 50
             }}
-            data={barCodes}
+            data={barCodes?.reverse()}
             renderItem={({ item }) => (
                 <View
                     onTouchEnd={ () => console.log(item.id) }
